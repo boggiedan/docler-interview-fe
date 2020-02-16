@@ -2,7 +2,7 @@ import { all, fork } from "redux-saga/effects";
 import {
   watchFetchAllUsers,
   watchFetchUserTodos
-} from "../components/user/userActionWatchers";
+} from "../components/userActionWatchers";
 
 function* rootActions() {
   yield all([fork(watchFetchAllUsers), fork(watchFetchUserTodos)]);

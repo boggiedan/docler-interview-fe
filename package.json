@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "test",
-    "start": "webpack-dev-server --config ./config/webpack.config.local.js",
+    "test": "jest",
+    "start": "webpack-dev-server --config ./config/webpack/webpack.config.local.js",
     "build": "webpack --mode production"
   },
   "author": "",
@@ -28,6 +28,24 @@
     "style-loader": "^1.1.3",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.10.3"
+    "webpack-dev-server": "^3.10.3",
+    "jest": "25.1.0",
+    "react-jest": "0.2.1",
+    "enzyme": "3.11.0",
+    "enzyme-adapter-react-16": "1.15.2",
+    "enzyme-to-json": "3.4.4",
+    "redux-mock-store": "1.5.4"
+  },
+  "jest": {
+    "testRegex": "(.)+(test).js$",
+    "setupFilesAfterEnv": [
+      "<rootDir>config/test/jest.setup.js"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "moduleNameMapper": {
+      "(.)+(styles).css$": "<rootDir>config/test/jest.styles.mock.js"
+    }
   }
 }

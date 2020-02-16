@@ -6,7 +6,7 @@ import {
   GET_USER_TODOS_SUCCESS,
   GET_USER_TODOS_FAILURE
 } from "./userActionTypes";
-import * as helper from "../common/reducerHelper";
+import * as helper from "./common/reducerHelper";
 
 const initialState = {
   isFetching: false,

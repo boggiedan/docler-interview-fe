@@ -4,10 +4,6 @@ import PropTypes from "prop-types";
 const Select = ({ options, selectedOption, onSelect }) => {
   const changeHandler = event => onSelect(event.target.value);
 
-  useEffect(() => {
-    onSelect(options[0].id);
-  }, []);
-
   const renderOptions = option => (
     <option key={option.id} value={option.id}>
       {option.value}
@@ -15,7 +11,7 @@ const Select = ({ options, selectedOption, onSelect }) => {
   );
 
   return (
-    <select value={selectedOption} onChange={changeHandler}>
+    <select value={selectedOption || ""} onChange={changeHandler}>
       {options.map(renderOptions)}
     </select>
   );
@@ -32,6 +28,10 @@ Select.propTypes = {
   selectedOption: PropTypes.number,
 
   onSelect: PropTypes.func.isRequired
+};
+
+Select.defaultProps = {
+  options: []
 };
 
 export default Select;

@@ -1,8 +1,7 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import useFetchData from "../../common/usefetchdata/useFetchData";
-import useInitialFetch from "../../common/useinitialfetch/useInitialFetch";
-import * as userActions from "../../user/userActions";
+import * as userActions from "../../userActions";
 import Select from "../../common/select/Select";
 
 const UserSelect = () => {
@@ -10,7 +9,9 @@ const UserSelect = () => {
   const [selectedUser, setSelectedUser] = useState(null);
   const [isFetching, errorMessage, items] = useFetchData();
 
-  useInitialFetch(userActions.fetchAll);
+  useEffect(() => {
+    dispatch(userActions.fetchAll());
+  }, []);
 
   const shouldRenderUsers = () => {
     return !isFetching && !errorMessage && items.length > 0;
